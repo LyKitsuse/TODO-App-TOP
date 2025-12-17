@@ -1,0 +1,145 @@
+:root {
+    --mainColor: #213448;
+    --subColor: #547792;
+    --subSubColor: #94B4C1;
+    --bgColor: #EAE0CF;
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        color: white;
+    }
+
+    #content {
+        background-color: var(--bgColor);
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        align-items: start;
+
+        #toolbar, #taskArea {
+            margin: 20px 50px;
+            padding: 10px;
+        }
+
+        #toolbar {
+            display: flex;
+            flex-direction: column;
+            filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.5));
+            border-radius: 20px;
+            background-color: white;
+
+            #newTask, #newProject, #myTasks, #myProjects {
+                display: flex;
+                flex: 1;
+                font-weight: bolder;
+                flex-direction: row;
+                align-items: center;
+                background-color: white;
+                filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.5));
+                border-radius: 10px; 
+                padding: 15px;
+                width: 200px;
+                margin: 5px;
+                transition: all 0.1s ease-in;
+            }
+
+            #newTask:hover, #newProject:hover, #myTasks:hover, #myProjects:hover{
+                background-color: var(--mainColor);
+                color: white;
+                cursor: pointer;
+            }
+
+            #newTask:hover i,
+            #newProject:hover i,
+            #myTasks:hover i,
+            #myProjects:hover i {
+                color: white;
+            }
+
+        }
+
+        /*Each Clickable Element (Text)*/
+        #toolbar > span > span {
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
+
+        /*Each Clickable Element (Icon)*/
+        i {
+            font-size: 1.5rem;
+            max-height: 25px;
+            max-width: 25px;
+            color: var(--mainColor);
+            transition: all 0.1s ease-in;
+        }
+
+        #taskArea {
+            display: flex;
+            flex-direction: row;
+            border-radius: 10px;
+
+            .task {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                max-width: 200px;
+                width: 200px;
+                padding: 20px;
+                margin: 20px;
+                max-height: 220px;
+                height: 250px;
+                background-color: white;
+                filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+                display: flex;
+                flex-direction: column;
+                border-radius: 10px;
+                
+                .infoContainer {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .name {
+                    font-size: large;
+                }
+
+                .taskContainer {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .delete > i{
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+}
+
+header, footer {
+    background-color: var(--subColor);
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-weight: bolder;
+    color: white;
+}
+
