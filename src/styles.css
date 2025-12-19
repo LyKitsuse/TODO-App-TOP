@@ -214,8 +214,22 @@ footer {
             transition: all 0.1s ease-in;
         }
 
+        .cancel {
+            margin-top: 10px;
+            border: none;
+            border-radius: 20px;
+            background-color: darkred;
+            color: white;
+            padding: 10px;
+            transition: all 0.1s ease-in;
+        }
+
         .submit:hover {
             background-color: var(--mainColor);
+        }
+
+        .cancel:hover {
+            background-color: red;
         }
     }
 }

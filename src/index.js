@@ -37,6 +37,7 @@ myProjects.addEventListener("click", () => {
 
 const submitTask = document.querySelector("#submitTask");
 const submitProj = document.querySelector("#submitProj");
+const cancel = document.querySelector(".cancel");
 
 const taskName = document.getElementById("taskName");
 const taskDesc = document.getElementById("taskDesc");
@@ -71,6 +72,10 @@ function clearHTML() {
     elem.innerHTML = '';
 }
 
+cancel.addEventListener("click", () => {
+    newTaskDialog.close();
+    newProjDialog.close();
+})
 
 
 

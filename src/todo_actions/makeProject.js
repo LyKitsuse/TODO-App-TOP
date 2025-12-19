@@ -12,12 +12,24 @@ export default function makeProject(name, desc) {
 }
 
 export function printProject() {
-     const ProjectArea = document.createElement('div');
-    ProjectArea.id = "projectArea";
     const elem = document.querySelector('#elements');
     const printTaskHeader = document.createElement("h1");
     printTaskHeader.textContent = "Projects";
 
     elem.append(printTaskHeader);
-    elem.append(ProjectArea);
+    let projArea;
+
+    if(document.querySelector("#projectArea") == null) {
+        projArea = document.createElement('div');
+        projArea.id = "projectArea";
+        elem.append(projArea);
+    } else {
+        projArea = document.querySelector('#projectArea');
+    } 
+
+    // Project Append
+
+    project.forEach((itProject) => {
+
+    })
 }

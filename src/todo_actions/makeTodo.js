@@ -32,7 +32,7 @@ export function printTask() {
     
     // print Each Task
 
-    tasks.forEach((itTask, i) => {
+    tasks.forEach((itTask) => {
         const task = document.createElement("div");
         taskArea.append(task);
 
