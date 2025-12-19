@@ -63,7 +63,7 @@ export function printTask() {
         const dueDate = document.createElement("span");
         dueDate.textContent = "9/11/2001";
 
-        // Turn into Function
+        // TODO: Turn into Function
         const priority = document.createElement("span");
         if(!itTask.priority) {
             priority.innerHTML = '<i class="fi fi-br-star"></i>';

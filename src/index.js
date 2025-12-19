@@ -12,8 +12,8 @@ const myProjects = document.getElementById("myProjects");
 
 home.addEventListener("click", () => {
     clearHTML();
-    printTask();
     printProject();
+    printTask();
 })
 
 newTask.addEventListener("click", () => {
@@ -83,8 +83,8 @@ cancel.addEventListener("click", () => {
 /**
  * Must be able to
  * / Make a TODO with (title, desc, dueDate, priority)
- * - Make a Project that has TODOs in them
- * - View TODOs by clicking
+ * / Make a Project that has TODOs in them
+ * - Project Needs to reflect all tasks with the tag of the proj id
  * - Edit TODO
  * - Delete TODO
  * - Add Persistent Data using localStorage (https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
