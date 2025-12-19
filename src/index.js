@@ -2,6 +2,13 @@ import makeTodo from "./todo_actions/makeTodo.js";
 
 import "./styles.css"
 
+const newTask = document.getElementById("newTask");
+const newTaskDialog = document.getElementById("newTaskDialog");
+
+newTask.addEventListener("click", () => {
+    newTaskDialog.show();
+})
+
 
 
 
