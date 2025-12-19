@@ -1,4 +1,4 @@
-import makeTodo from "./todo_actions/makeTodo.js";
+import makeTask, { tasks, printTasks } from "./todo_actions/makeTodo.js";
 
 import "./styles.css"
 
@@ -7,7 +7,21 @@ const newTaskDialog = document.getElementById("newTaskDialog");
 
 newTask.addEventListener("click", () => {
     newTaskDialog.show();
-})
+});
+
+const submitBTN = document.querySelector(".submit");
+const taskName = document.getElementById("taskName");
+const taskDesc = document.getElementById("taskDesc");
+const taskDue = document.getElementById("taskDue");
+
+
+submitBTN.addEventListener("click", (e)=> {
+    let taskPrio = document.getElementById("taskPrio").checked;
+    console.log("ping")
+    let newTask = new makeTask(taskName.value, taskDesc.value, taskDue.value, taskPrio);
+    tasks.push(newTask);
+    printTasks();
+});
 
 
 
