@@ -16,6 +16,10 @@
     </header>
     <div id="content">
         <div id="toolbar">
+            <span id="home">
+                <i class="fi fi-sr-home"></i>
+                <span>Home</span>
+            </span>
             <span id="newTask">
                 <i class="fi fi-sr-square-plus"></i>
                 <span>New Task</span>
@@ -65,25 +69,61 @@
 
                         </select>
                     </span>
-                    <button type="submit" class="submit">OK</button>
+                    <button type="submit" id="submitTask" class="submit">OK</button>
+                </form>
+            </dialog>
+
+            <dialog close id="newProjectDialog">
+                <h4>New Project!</h4>
+                <form method="dialog">
+                    <span>
+                        <label for="projectName">Project Name:</label>
+                        <input type="text" id="projectName">
+                    </span>
+                    
+                    <span>
+                        <label for="projectDesc">Description:</label>
+                        <input type="input" id="projectDesc">
+                    </span>
+
+                    <button type="submit" id="submitProj" class="submit">OK</button>
                 </form>
             </dialog>
         </div>
-        <div id="taskArea">
-            <div class="task" id="task1">
-                <div class="infoContainer">
-                    <span class="name">Task 1</span>
-                    <span class="description">Lorem ipsum dolor sit amet.</span>
-                    <span class="tag">Task</span>
-                </div>
-                <div class="taskContainer">
-                    <span class="dueDate">7/11/2024</span>
-                    <span class="priority"><i class="fi fi-br-star"></i></span>
-                    <span class="delete"><i class="fi fi-br-trash"></i></span>
+        <div id="elements">
+            <h1>Projects</h1>
+            <div id="projectArea">
+                <div class="project">
+                    <span class="name">Project 1</span>
+                    <div class="projectDesc">
+                        <span class="description">Make a New Project by using the "New Project" button on the left tab.</span>
+                        
+                        <div class="projectContainer">
+                            <span class="totalTask">Total Tasks: 0</span>
+                            <span class="delete"><i class="fi fi-br-trash"></i></span>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
+
+            <h1>Tasks</h1>
+            <div id="taskArea">
+                <div class="task" id="task1">
+                    <div class="infoContainer">
+                        <span class="name">Make a New Task</span>
+                        <span class="description">Go Ahead and make a New Task using the "New Task" Button on the left side of the screen.</span>
+                        <span class="tag">Task</span>
+                    </div>
+                    <div class="taskContainer">
+                        <span class="dueDate">7/11/2024</span>
+                        <span class="priority"><i class="fi fi-br-star"></i></span>
+                        <span class="delete"><i class="fi fi-br-trash"></i></span>
+                    </div>
+                </div>
+            </div>  
+        </div>
             
-        </div>  
     </div>
     <footer>
         Created by LyKitsuse

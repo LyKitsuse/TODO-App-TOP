@@ -28,7 +28,7 @@ body {
         flex-direction: row;
         align-items: start;
 
-        #toolbar, #taskArea {
+        #toolbar {
             margin: 20px 50px;
             padding: 10px;
         }
@@ -40,7 +40,7 @@ body {
             border-radius: 20px;
             background-color: white;
 
-            #newTask, #newProject, #myTasks, #myProjects {
+            #newTask, #newProject, #myTasks, #myProjects, #home {
                 display: flex;
                 flex: 1;
                 font-weight: bolder;
@@ -55,7 +55,11 @@ body {
                 transition: all 0.1s ease-in;
             }
 
-            #newTask:hover, #newProject:hover, #myTasks:hover, #myProjects:hover{
+            #newTask:hover,
+            #newProject:hover,
+            #myTasks:hover,
+            #myProjects:hover,
+            #home:hover {
                 background-color: var(--mainColor);
                 color: white;
                 cursor: pointer;
@@ -64,7 +68,8 @@ body {
             #newTask:hover i,
             #newProject:hover i,
             #myTasks:hover i,
-            #myProjects:hover i {
+            #myProjects:hover i,
+            #home:hover i{
                 color: white;
             }
 
@@ -83,6 +88,32 @@ body {
             max-width: 25px;
             color: var(--mainColor);
             transition: all 0.1s ease-in;
+        }
+        
+        #projectArea {
+            .project {
+                background-color: white;
+                padding: 20px;
+                filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+                width: 400px;
+                max-width: 400px;
+                border-radius: 10px;
+
+                .projectDesc {
+                    display: flex;
+                    flex-direction: column;
+
+                    .projectContainer {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .delete > i{
+                            color: red;
+                        }
+                    }
+                }
+            }
         }
 
         #taskArea {
@@ -122,10 +153,6 @@ body {
                     }
                 }
 
-                .name {
-                    font-size: large;
-                }
-
                 .taskContainer {
                     display: flex;
                     flex-direction: row;
@@ -145,6 +172,11 @@ header, footer {
     background-color: var(--subColor);
 }
 
+.name {
+    font-size: large;
+    font-weight: bolder;
+}
+
 footer {
     display: flex;
     align-items: center;
@@ -154,7 +186,7 @@ footer {
     color: white;
 }
 
-#newTaskDialog {
+#newTaskDialog, #newProjectDialog {
     position: absolute;
     border: gray 1px solid;
     padding: 30px 20px;
