@@ -11,8 +11,12 @@
 <body>
     <header>
         <nav>
-            <h2>TODO-ify</h2>
-            <a style="text-decoration:none; color: white" href="https://github.com/LyKitsuse/TODO-App-TOP"><i class="fi fi-brands-github"></i></a>
+            <div>
+                <i class="fi fi-sr-layer-plus"></i>
+                <h2>TODO-ify</h2>
+            </div>
+            
+            <a style="text-decoration:none; color: white; font-size: 1.5em;" href="https://github.com/LyKitsuse/TODO-App-TOP"><i class="fi fi-brands-github"></i></a>
         </nav>
     </header>
     <div id="content">
@@ -41,7 +45,7 @@
             <!-- <dialog box> -->
             <dialog close id="newTaskDialog">
                 <h4>New Task!</h4>
-                <form method="dialog">
+                <form method="dialog" id="taskForm">
                     <span>
                         <label for="taskName">Name:</label>
                         <input type="text" id="taskName">
@@ -77,7 +81,7 @@
 
             <dialog close id="newProjectDialog">
                 <h4>New Project!</h4>
-                <form method="dialog">
+                <form method="dialog" id="projForm">
                     <span>
                         <label for="projectName">Project:</label>
                         <input type="text" id="projectName">

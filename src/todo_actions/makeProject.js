@@ -58,12 +58,19 @@ export function printProject() {
         // TODO: Task Rewrite
         const totalTask = document.createElement("span");
         projectContainer.append(totalTask);
+        totalTask.className = "totalTask";
         totalTask.textContent = "Total Task: null"; // TODO: Replace
 
         const deleteBtn = document.createElement("span");
         projectContainer.append(deleteBtn);
+        deleteBtn.className = "delete";
         deleteBtn.innerHTML = '<i class="fi fi-br-trash"></i>';
-
-
     })
+}
+
+export function checkTagExist(input) {
+    if(project.some((proj) => proj.name === input) || input == 'null' || input == ''){
+        return true;
+    }
+    return false;
 }

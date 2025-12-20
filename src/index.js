@@ -1,5 +1,5 @@
 import makeTask, { tasks, printTask } from "./todo_actions/makeTodo.js";
-import makeProject, { project, printProject, projects } from "./todo_actions/makeProject.js";
+import makeProject, { project, printProject, checkTagExist } from "./todo_actions/makeProject.js";
 import "./styles.css";
 
 const home = document.getElementById("home");
@@ -11,9 +11,7 @@ const myTasks = document.getElementById("myTasks");
 const myProjects = document.getElementById("myProjects");
 
 home.addEventListener("click", () => {
-    clearHTML();
-    printProject();
-    printTask();
+    printAll();
 })
 
 newTask.addEventListener("click", () => {
@@ -29,7 +27,6 @@ myTasks.addEventListener("click", () => {
     printTask();
 })
 
-
 myProjects.addEventListener("click", () => {
     clearHTML();
     printProject();
@@ -43,33 +40,40 @@ const taskName = document.getElementById("taskName");
 const taskDesc = document.getElementById("taskDesc");
 const taskDue = document.getElementById("taskDue");
 
+
 const projName = document.getElementById("projectName");
 const projDesc = document.getElementById("projectDesc");
 
 submitTask.addEventListener("click", (e)=> {
     let taskPrio = document.getElementById("taskPrio").checked;
+    let taskTag = document.getElementById("taskTag");
     console.log("ping")
-    let newTask = new makeTask(taskName.value, taskDesc.value, taskDue.value, taskPrio);
-    tasks.push(newTask);
+    if(!checkTagExist(taskTag.value)) {
+        alert("Must be a Valid Project Name!");
+    }
+    else {
+        let newTask = new makeTask(taskName.value, taskDesc.value, taskDue.value, taskPrio, taskTag.value);
+        tasks.push(newTask);
+    }
+    document.getElementById('taskForm').reset();
 
-    clearHTML();
-    printProject();
-    printTask();
+    printAll();
 });
 
 submitProj.addEventListener("click", () => {
     let newProj = new makeProject(projName.value, projDesc.value);
     project.push(newProj);
+    document.getElementById('projForm').reset();
 
-    clearHTML();
-    printProject();
-    printTask();
+    printAll();
 })
 
 
-function clearHTML() {
+export function printAll() {
     const elem = document.getElementById("elements");
     elem.innerHTML = '';
+    printProject();
+    printTask();
 }
 
 cancel.addEventListener("click", () => {

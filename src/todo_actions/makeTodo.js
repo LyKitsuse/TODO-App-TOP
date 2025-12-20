@@ -1,3 +1,5 @@
+import { printAll } from '../index';
+
 export const tasks = [];
 export function printTasks() {
     tasks.forEach((task) => {
@@ -5,10 +7,15 @@ export function printTasks() {
     })
 }
 
-export default function makeTask(name, desc, dueDate, priority) {
+export default function makeTask(name, desc, dueDate, priority, tag) {
     this.name = name;
     this.desc = desc;
-    this.tag = "Unset"
+    if(tag == 'null' || tag == ''){
+        this.tag = "Unset";
+    }
+    else {
+        this.tag = tag;
+    }
     this.dueDate = dueDate;
     this.priority = priority;
     this.id = crypto.randomUUID();
@@ -61,16 +68,11 @@ export function printTask() {
         taskContainer.className = "taskContainer";
 
         const dueDate = document.createElement("span");
-        dueDate.textContent = "9/11/2001";
+        dueDate.textContent = itTask.dueDate;
 
-        // TODO: Turn into Function
         const priority = document.createElement("span");
-        if(!itTask.priority) {
-            priority.innerHTML = '<i class="fi fi-br-star"></i>';
-        } else {
-            priority.innerHTML = '<i class="fi fi-sr-star"></i>'
-        }
-        priority.className = "priorty";
+        changePriority(priority ,itTask.priority);
+        priority.className = "priority";
 
         const deleteBtn = document.createElement("span");
         deleteBtn.className = "delete";
@@ -79,8 +81,38 @@ export function printTask() {
         task.append(taskContainer);
         taskContainer.append(dueDate);
         taskContainer.append(priority);
-        taskContainer.append(deleteBtn)
+        taskContainer.append(deleteBtn);
     });
 }
+
+export function changePriority(prio, itTask) {
+    if(!itTask) {
+        prio.innerHTML = '<i class="fi fi-br-star"></i>';
+    } else {
+        // Prioritize
+        prio.innerHTML = '<i class="fi fi-sr-star" style="color: gold"></i>';
+    }
+}
+
+document.getElementById("elements").addEventListener("click", (e) => {
+    // check if a priority icon was clicked
+    if (!e.target.closest(".priority")) return;
+
+    const prioritySpan = e.target.closest(".priority");
+    const taskElem = prioritySpan.closest(".task");
+
+    tasks.forEach((itTask) => {
+        if (itTask.id === taskElem.id) {
+            itTask.priority = !itTask.priority;
+        }
+    });
+
+    // re-render
+    printAll();
+});
+
+
+// TODO: Project Tag
+// TODO: Add Persistent Data
 
 
