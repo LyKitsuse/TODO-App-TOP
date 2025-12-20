@@ -1,4 +1,6 @@
+import { isFirstDayOfMonth } from 'date-fns';
 import { printAll } from '../index';
+import { project } from './makeProject';
 
 export const tasks = [];
 export function printTasks() {
@@ -11,9 +13,15 @@ export default function makeTask(name, desc, dueDate, priority, tag) {
     this.name = name;
     this.desc = desc;
     if(tag == 'null' || tag == ''){
-        this.tag = "Unset";
+        this.tag = "Unset"; 
     }
     else {
+        project.forEach((proj, it) => {
+            if(proj.name == tag) {
+                this.class = proj.id;
+                proj.count += 1;
+            }
+        })
         this.tag = tag;
     }
     this.dueDate = dueDate;
@@ -43,7 +51,13 @@ export function printTask() {
         const task = document.createElement("div");
         taskArea.append(task);
 
-        task.className = "task";
+        if(itTask.class != null){
+            task.className = `task ${itTask.class}`;
+        }
+        else {
+            task.className = `task`;
+        }
+        
         task.id = itTask.id;
 
         const infoContainer = document.createElement("div");

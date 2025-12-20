@@ -8,6 +8,7 @@ export function printProjects() {
 export default function makeProject(name, desc) {
     this.name = name;
     this.desc = desc;
+    this.count = 0;
     this.id = crypto.randomUUID();
 }
 
@@ -58,8 +59,8 @@ export function printProject() {
         // TODO: Task Rewrite
         const totalTask = document.createElement("span");
         projectContainer.append(totalTask);
-        totalTask.className = "totalTask";
-        totalTask.textContent = "Total Task: null"; // TODO: Replace
+        totalTask.className = "totalask";
+        totalTask.textContent = `Total Task: ${itProject.count}`; // TODO: Replace
 
         const deleteBtn = document.createElement("span");
         projectContainer.append(deleteBtn);

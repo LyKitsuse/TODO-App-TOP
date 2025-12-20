@@ -23,12 +23,14 @@ newProj.addEventListener("click", ()=> {
 })
 
 myTasks.addEventListener("click", () => {
-    clearHTML();
+    const elem = document.getElementById("elements");
+    elem.innerHTML = '';
     printTask();
 })
 
 myProjects.addEventListener("click", () => {
-    clearHTML();
+    const elem = document.getElementById("elements");
+    elem.innerHTML = '';
     printProject();
 })
 
