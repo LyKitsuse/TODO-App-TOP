@@ -1,4 +1,5 @@
 import makeTask, { tasks, printTask } from "./todo_actions/makeTodo.js";
+import removeTask from "./todo_actions/remove.js";
 import makeProject, { project, printProject, checkTagExist } from "./todo_actions/makeProject.js";
 import "./styles.css";
 
@@ -83,22 +84,28 @@ cancel.addEventListener("click", () => {
     newProjDialog.close();
 })
 
+document.getElementById("elements").addEventListener("click", (e) => {
+    removeTask(e);
+    printAll();
+});
+
+
 
 
 
 /**
  * Must be able to
- * / Make a TODO with (title, desc, dueDate, priority)
- * / Make a Project that has TODOs in them
- * - Project Needs to reflect all tasks with the tag of the proj id
- * - Edit TODO
- * - Delete TODO
+ * / Make a task with (title, desc, dueDate, priority)
+ * / Make a Project that has tasks in them
+ * / Project Needs to reflect all tasks with the tag of the proj id
+ * - Edit task
+ * / Delete task/proj
  * - Add Persistent Data using localStorage (https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
  */
 
 /**
  * Personal Notes
- * - Each TODO can have their own ID
- * - The ID can be used to get the appropriate TODO for editing or deleting
- * - Return null if TODO id is invalid or DNE
+ * / Each taks can have their own ID
+ * / The ID can be used to get the appropriate task  for editing or deleting
+ * / Return null if task id is invalid or DNE
  */

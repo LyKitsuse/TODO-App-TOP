@@ -16,9 +16,9 @@ export default function makeTask(name, desc, dueDate, priority, tag) {
         this.tag = "Unset"; 
     }
     else {
-        project.forEach((proj, it) => {
+        project.forEach((proj) => {
             if(proj.name == tag) {
-                this.class = proj.id;
+                this.classID = proj.id;
                 proj.count += 1;
             }
         })
@@ -48,11 +48,14 @@ export function printTask() {
     // print Each Task
 
     tasks.forEach((itTask) => {
+        if(itTask == null) {
+            return;
+        }
         const task = document.createElement("div");
         taskArea.append(task);
 
-        if(itTask.class != null){
-            task.className = `task ${itTask.class}`;
+        if(itTask.classID != null){
+            task.className = `task ${itTask.classID}`;
         }
         else {
             task.className = `task`;
@@ -124,7 +127,6 @@ document.getElementById("elements").addEventListener("click", (e) => {
     // re-render
     printAll();
 });
-
 
 // TODO: Project Tag
 // TODO: Add Persistent Data
