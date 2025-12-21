@@ -1,10 +1,11 @@
 import { tasks } from './makeTodo';
-import { project } from './makeProject';
+import { project, appendComboBox } from './makeProject';
 
 export default function removeTask(e) {
     if (!e.target.closest(".delete")) return;
     if (e.target.closest(".delete")) {
         const deleteSpan = e.target.closest(".delete");
+        // Deleting Tasks
         if(deleteSpan.closest(".task")){
             console.log("pang");
             const taskElem = deleteSpan.closest(".task");
@@ -15,6 +16,8 @@ export default function removeTask(e) {
                 tasks.splice(index, 1);
             }
         }
+
+        // Deleting Projects
         if(deleteSpan.closest(".project")) {
             
             const projElem = deleteSpan.closest(".project");
@@ -31,6 +34,7 @@ export default function removeTask(e) {
 
                 console.log("peng");
                 project.splice(index, 1);
+                appendComboBox();
             }
         }
     }

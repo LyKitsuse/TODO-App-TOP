@@ -1,6 +1,6 @@
 import makeTask, { tasks, printTask } from "./todo_actions/makeTodo.js";
 import removeTask from "./todo_actions/remove.js";
-import makeProject, { project, printProject, checkTagExist } from "./todo_actions/makeProject.js";
+import makeProject, { project, printProject, checkTagExist, appendComboBox } from "./todo_actions/makeProject.js";
 import "./styles.css";
 
 const home = document.getElementById("home");
@@ -49,7 +49,7 @@ const projDesc = document.getElementById("projectDesc");
 
 submitTask.addEventListener("click", (e)=> {
     let taskPrio = document.getElementById("taskPrio").checked;
-    let taskTag = document.getElementById("taskTag");
+    let taskTag = document.getElementById("projectTag");
     console.log("ping")
     if(!checkTagExist(taskTag.value)) {
         alert("Must be a Valid Project Name!");
@@ -64,10 +64,14 @@ submitTask.addEventListener("click", (e)=> {
 });
 
 submitProj.addEventListener("click", () => {
+    if(projName.value.length === 0){
+        throwError();
+        return;
+    }
     let newProj = new makeProject(projName.value, projDesc.value);
     project.push(newProj);
     document.getElementById('projForm').reset();
-
+    appendComboBox();
     printAll();
 })
 
@@ -89,6 +93,9 @@ document.getElementById("elements").addEventListener("click", (e) => {
     printAll();
 });
 
+function throwError() {
+    alert("Invalid Project Name!");
+}
 
 
 

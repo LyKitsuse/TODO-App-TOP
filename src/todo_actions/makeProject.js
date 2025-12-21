@@ -75,3 +75,15 @@ export function checkTagExist(input) {
     }
     return false;
 }
+
+export function appendComboBox() {
+    const tags = document.querySelector("#projectTag");
+    tags.innerHTML = '';
+    project.forEach((proj) => {
+        let makeOption = document.createElement("option");
+        tags.append(makeOption);
+        makeOption.value = proj.name;
+        makeOption.textContent = proj.name;
+
+    })
+}
