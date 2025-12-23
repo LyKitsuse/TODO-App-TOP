@@ -107,16 +107,6 @@ function throwError() {
     alert("Invalid Project Name!");
 }
 
-function checkNull(input) {
-    if(input.value.trim === 0){
-        return true;
-    }
-    return false;
-}
-
-
-
-
 /**
  * Must be able to
  * / Make a task with (title, desc, dueDate, priority)
