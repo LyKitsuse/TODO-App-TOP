@@ -54,13 +54,17 @@ submitTask.addEventListener("click", (e)=> {
     if(!checkTagExist(taskTag.value)) {
         alert("Must be a Valid Project Name!");
     }
+    else if(!document.getElementById('taskForm').checkValidity()){
+        console.log("Form Invalid");
+        return;
+    }
     else {
         let newTask = new makeTask(taskName.value, taskDesc.value, taskDue.value, taskPrio, taskTag.value);
         tasks.push(newTask);
+        printAll();
+        newTaskDialog.close();
     }
     document.getElementById('taskForm').reset();
-
-    printAll();
 });
 
 submitProj.addEventListener("click", () => {
@@ -68,11 +72,17 @@ submitProj.addEventListener("click", () => {
         throwError();
         return;
     }
+    if(!document.getElementById('projForm').checkValidity()) {
+        console.log("Form Invalid");
+        return;
+    }
     let newProj = new makeProject(projName.value, projDesc.value);
     project.push(newProj);
     document.getElementById('projForm').reset();
     appendComboBox();
     printAll();
+    newProjDialog.close();
+
 })
 
 
@@ -97,6 +107,13 @@ function throwError() {
     alert("Invalid Project Name!");
 }
 
+function checkNull(input) {
+    if(input.value.trim === 0){
+        return true;
+    }
+    return false;
+}
+
 
 
 
@@ -108,11 +125,4 @@ function throwError() {
  * - Edit task
  * / Delete task/proj
  * - Add Persistent Data using localStorage (https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
- */
-
-/**
- * Personal Notes
- * / Each taks can have their own ID
- * / The ID can be used to get the appropriate task  for editing or deleting
- * / Return null if task id is invalid or DNE
  */
