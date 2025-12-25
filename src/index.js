@@ -10,7 +10,12 @@ const newProjDialog = document.getElementById("newProjectDialog");
 const toolbar = document.getElementById("toolbar");
 const elem = document.getElementById('elements');
 
-printAll();
+loadTasks();
+
+if(tasks.length != 0 || project.length != 0){
+    printAll();
+}
+
 
 toolbar.addEventListener('click', (e) => {
     console.log('pong')
@@ -95,7 +100,6 @@ submitProj.addEventListener("click", () => {
 
 })
 
-
 export function printAll() {
     const elem = document.getElementById("elements");
     elem.innerHTML = '';
@@ -118,14 +122,3 @@ document.getElementById("elements").addEventListener("click", (e) => {
 function throwError() {
     alert("Invalid Project Name!");
 }
-
-
-/**
- * Must be able to
- * / Make a task with (title, desc, dueDate, priority)
- * / Make a Project that has tasks in them
- * / Project Needs to reflect all tasks with the tag of the proj id
- * - Edit task
- * / Delete task/proj
- * - Add Persistent Data using localStorage (https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
- */
