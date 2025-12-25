@@ -1,4 +1,19 @@
 export const project = [];
+
+const KEY_ITEMS = "project";
+
+export function saveProjects() {
+    localStorage.setItem(KEY_ITEMS, JSON.stringify(project));
+}
+
+export function loadProjects() {
+    const stored = JSON.parse(localStorage.getItem(KEY_ITEMS));
+    if (stored) {
+        project.length = 0;          // clear array but keep reference
+        project.push(...stored);     // restore tasks
+    }
+}
+
 export function printProjects() {
     tasks.forEach((project) => {
         console.log(project);
@@ -79,6 +94,9 @@ export function checkTagExist(input) {
 export function appendComboBox() {
     const tags = document.querySelector("#projectTag");
     tags.innerHTML = '';
+    let firstOption = document.createElement("option");
+    tags.append(firstOption);
+    firstOption.value = '';
     project.forEach((proj) => {
         let makeOption = document.createElement("option");
         tags.append(makeOption);

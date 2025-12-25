@@ -3,6 +3,21 @@ import { printAll } from '../index';
 import { project } from './makeProject';
 
 export const tasks = [];
+
+const KEY_ITEMS = "tasks";
+
+export function saveTasks() {
+    localStorage.setItem(KEY_ITEMS, JSON.stringify(tasks));
+}
+
+export function loadTasks() {
+    const stored = JSON.parse(localStorage.getItem(KEY_ITEMS));
+    if (stored) {
+        tasks.length = 0;          // clear array but keep reference
+        tasks.push(...stored);     // restore tasks
+    }
+}
+
 export function printTasks() {
     tasks.forEach((task) => {
         console.log(task);
@@ -125,10 +140,9 @@ document.getElementById("elements").addEventListener("click", (e) => {
     });
 
     // re-render
+    saveTasks();
     printAll();
 });
 
-// TODO: Project Tag
-// TODO: Add Persistent Data
 
 

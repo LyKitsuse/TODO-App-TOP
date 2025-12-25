@@ -1,5 +1,5 @@
-import { tasks } from './makeTodo';
-import { project, appendComboBox } from './makeProject';
+import { tasks, saveTasks } from './makeTodo';
+import { project, appendComboBox, saveProjects } from './makeProject';
 
 export default function removeTask(e) {
     if (!e.target.closest(".delete")) return;
@@ -14,6 +14,7 @@ export default function removeTask(e) {
             const index = tasks.findIndex(itTask => itTask.id === taskElem.id);
             if (index !== -1) {
                 tasks.splice(index, 1);
+                saveTasks();
             }
         }
 
@@ -34,6 +35,7 @@ export default function removeTask(e) {
 
                 console.log("peng");
                 project.splice(index, 1);
+                saveProjects();
                 appendComboBox();
             }
         }
